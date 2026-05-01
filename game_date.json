@@ -1,0 +1,90 @@
+{
+  "world": {
+    "map": {
+      "type": "open_field",
+      "safe_zone": "city_gate",
+      "initial_spawn": "city_edge",
+      "pvp_rules": {
+        "level_1_10": "pvp_off",
+        "level_11_59": "pvp_off_except_level10_area",
+        "level_60_plus": "pvp_on_all_field_except_city_gate"
+      }
+    }
+  },
+
+  "level_system": {
+    "start_level": 1,
+    "max_level": 100,
+    "dungeon_required_level": 85,
+    "pvp_unlock_level": 60,
+    "level10_area_pvp": true
+  },
+
+  "player": {
+    "initial_equipment": ["fist_attack"],
+    "respawn": {
+      "location": "city_edge",
+      "keep_items": true
+    }
+  },
+
+  "pvp": {
+    "arena_3v3": {
+      "reward": {
+        "limited_material": 0.20
+      }
+    },
+    "field_pvp": {
+      "reward": "none"
+    }
+  },
+
+  "dungeon": {
+    "theme": "ruins",
+    "respawn": "outside_only",
+    "reward_condition": {
+      "min_damage": 10000
+    },
+    "bosses": {
+      "small_bosses": {
+        "type": "ogre",
+        "count": 4,
+        "attack_pattern": "random_player_skills",
+        "drops": {
+          "rare": 0.01,
+          "normal": 0.70,
+          "none": 0.29
+        }
+      },
+      "mid_boss": {
+        "trigger": "main_boss_hp_50",
+        "stats_multiplier": {
+          "hp": 2.0,
+          "attack": 1.5,
+          "speed": 1.2
+        },
+        "drops": {
+          "rare": 0.01,
+          "normal": 0.70,
+          "none": 0.29
+        }
+      },
+      "main_boss": {
+        "name": "Ancient Dragon",
+        "size": "2x_player",
+        "behavior": {
+          "non_aggressive_time": 15,
+          "can_fly": true,
+          "fly_attacks": ["fire_rain", "dive_attack", "fireball_burst"],
+          "ground_attacks": ["claw_combo", "tail_spin", "charge", "roar", "fire_breath"],
+          "rage_mode_hp": 0.25
+        },
+        "drops": {
+          "limited": 0.05,
+          "rare": 0.30,
+          "normal": 0.65
+        }
+      }
+    }
+  }
+}
